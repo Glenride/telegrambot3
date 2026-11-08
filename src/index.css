@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-pink: #ff2d95;
+  --neon-blue: #00d4ff;
+  --neon-purple: #9d4edd;
+}
+
+body {
+  @apply bg-tower-dark text-white min-h-screen;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Telegram WebApp safe areas */
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Neon glow effects */
+.neon-glow {
+  text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+}
+
+.choice-btn {
+  @apply w-full p-4 rounded-lg border transition-all duration-200;
+  @apply bg-tower-mid border-tower-light hover:border-neon-blue;
+  @apply text-left text-sm;
+}
+
+.choice-btn:hover {
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.choice-btn.premium {
+  @apply border-neon-purple;
+}
+
+.choice-btn.premium:hover {
+  box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
+}
+
+.stat-bar {
+  @apply h-2 rounded-full bg-tower-light overflow-hidden;
+}
+
+.stat-bar-fill {
+  @apply h-full transition-all duration-500;
+}

@@ -1,0 +1,143 @@
+{
+  "entry_scene_id": "intro_02_calvin_gala",
+  "scenes": {
+    "intro_02_calvin_gala": {
+      "id": "intro_02_calvin_gala",
+      "character": "calvin",
+      "chapter": 1,
+      "text": [
+        "The tower's gala floor glitters with refracted neon. Calvin's eyes track yours from across the room, a silent algorithm deciding if you are worth the contract.",
+        "Emotional telemetry drones hum overhead, sampling every blush."
+      ],
+      "choices": [
+        {
+          "id": "scan_room",
+          "label": "Scan the room for exits",
+          "effects": { "love_integrity": 2, "career_status": 1 },
+          "set_flags": ["calvin_route_active"],
+          "energy_cost": 1,
+          "next_scene_id": "calvin_02_floor_show"
+        },
+        {
+          "id": "accept_champagne",
+          "label": "Take the champagne Calvin offers",
+          "effects": { "temptation": 3 },
+          "clear_flags": ["calvin_morning_regret"],
+          "energy_cost": 1,
+          "next_scene_id": "calvin_02_floor_show"
+        }
+      ]
+    },
+    "calvin_02_floor_show": {
+      "id": "calvin_02_floor_show",
+      "character": "calvin",
+      "chapter": 1,
+      "text": [
+        "Calvin loops a discreet holo around you, projecting potential futures—each a contract clause.",
+        "He asks which layer of Echocity you intend to betray first."
+      ],
+      "choices": [
+        {
+          "id": "lean_into_show",
+          "label": "Lean into Calvin's projection",
+          "effects": { "love_integrity": -1, "temptation": 2 },
+          "energy_cost": 1,
+          "next_scene_id": "calvin_03_private_offer"
+        },
+        {
+          "id": "resist_overlay",
+          "label": "Resist the overlay's pull",
+          "effects": { "love_integrity": 1, "temptation": -2 },
+          "energy_cost": 1,
+          "next_scene_id": "calvin_03_private_offer"
+        }
+      ]
+    },
+    "calvin_03_private_offer": {
+      "id": "calvin_03_private_offer",
+      "character": "calvin",
+      "chapter": 1,
+      "text": [
+        "A private elevator seals shut. Calvin slides a thin contract toward you, the ink still wet with tower authority.",
+        "Accepting means access; refusing means living with the question of what power tastes like."
+      ],
+      "choices": [
+        {
+          "id": "sign_contract",
+          "label": "Sign the contract",
+          "effects": { "career_status": 3 },
+          "set_flags": ["calvin_contract_signed"],
+          "energy_cost": 1,
+          "next_scene_id": "calvin_04_contract_room"
+        },
+        {
+          "id": "stall_for_time",
+          "label": "Stall for more time",
+          "effects": { "love_integrity": 1 },
+          "clear_flags": ["calvin_contract_signed"],
+          "energy_cost": 1,
+          "next_scene_id": "calvin_04_contract_room"
+        },
+        {
+          "id": "premium_negotiation",
+          "label": "Unlock Calvin's midnight terms (Premium)",
+          "effects": { "temptation": 4, "career_status": 2 },
+          "requires_item": "CALVIN_SCENE1",
+          "energy_cost": 1,
+          "next_scene_id": "calvin_05_touch_test"
+        }
+      ],
+      "premium_paywall": {
+        "required_item": "CALVIN_SCENE1",
+        "description": "Grants access to Calvin's private negotiation scene"
+      }
+    },
+    "calvin_04_contract_room": {
+      "id": "calvin_04_contract_room",
+      "character": "calvin",
+      "chapter": 1,
+      "conditions": {
+        "all_flags_true": ["calvin_route_active"],
+        "min_stats": { "energy": 1 }
+      },
+      "text": [
+        "Contract drones circle, verifying every biometric twitch.",
+        "Calvin waits, patient and predatory."
+      ],
+      "choices": [
+        {
+          "id": "submit_signature",
+          "label": "Submit your biometric signature",
+          "effects": { "career_status": 2 },
+          "energy_cost": 1,
+          "next_scene_id": "calvin_05_touch_test"
+        },
+        {
+          "id": "burn_energy",
+          "label": "Burn energy to keep resisting",
+          "effects": { "love_integrity": 2, "energy": -1 },
+          "energy_cost": 0,
+          "next_scene_id": "calvin_05_touch_test"
+        }
+      ]
+    },
+    "calvin_05_touch_test": {
+      "id": "calvin_05_touch_test",
+      "character": "calvin",
+      "chapter": 1,
+      "text": [
+        "Calvin calibrates the tower's touch-array to your pulse, testing how quickly you bend.",
+        "Every response feeds his model for you—and for Echocity."
+      ],
+      "choices": [
+        {
+          "id": "end_demo",
+          "label": "End the demonstration",
+          "effects": { "love_integrity": 1 },
+          "energy_cost": 1,
+          "next_scene_id": "calvin_06_public_scene"
+        }
+      ]
+    }
+  }
+}
